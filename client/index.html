@@ -3,31 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>J.A.T.E</title>
-    
-      <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css">
-      </link>
-      <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.js">
-      </script>
-      <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/mode/javascript/javascript.min.js">
-      </script>
-      <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/monokai.min.css">
-      </link>
+    <meta name="description" content="Just Another Text Editor - PWA Example" />
+    <meta name="theme-color" content="#225ca3" />
+    <title>Text Editor PWA</title>
+
+    <!-- CodeMirror Styles -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/monokai.min.css"
+    />
+    <!-- CodeMirror Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
   </head>
   <body>
     <nav id="navbar">
       <div class="nav-btn">
-        <a class="btn btn-sm btn-dark" id="buttonInstall" role="button">Install!</a>
+        <button id="buttonInstall" class="btn btn-sm btn-primary">
+          Install
+        </button>
       </div>
-     <h1> Just Another Text Editor</h1>
-     
-      <div class="navbar-brand" 
-            ><img src="./assets/icons/icon_96x96.png"
-          /></div>
+      <h1>Just Another Text Editor</h1>
+      <div class="navbar-brand">
+        <img src="./assets/icons/icon_96x96.png" alt="Text Editor Icon" />
+      </div>
     </nav>
 
     <main id="main">
@@ -35,6 +41,5 @@
         <div class="loading-spinner"></div>
       </div>
     </main>
-    
   </body>
 </html>

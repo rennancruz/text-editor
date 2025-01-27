@@ -1,50 +1,44 @@
-/* app shell CSS */
+/* Global styles for the app shell */
 :root {
-  --primary: #31a9e1;
-  --gray: #ececec;
-  --whitesmoke: #f5f5f5;
-  --dark: #222;
-  --monoaki: #272822;
-  --navbar-height: 50px;
+  --primary-color: #3498db;
+  --secondary-color: #ecf0f1;
+  --background-color: #2c3e50;
+  --text-light: #fdfdfd;
+  --text-dark: #2d3436;
+  --navbar-height: 60px;
 }
 
 body {
   margin: 0;
-  background-color: var(--monoaki);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  background-color: var(--background-color);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h1 {
-  font-size: 22px;
+  font-size: 1.5rem;
+  color: var(--text-light);
+  text-align: center;
 }
 
 #navbar {
   height: var(--navbar-height);
-  background-color: var(--primary);
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  background-color: var(--primary-color);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: white;
-  font-size: 22px;
-  font-weight: 550;
-  letter-spacing: 0.9px;
+  padding: 0 1rem;
 }
 
 .navbar-brand img {
-  padding-top: 10px;
+  max-height: 40px;
 }
 
 .loading-spinner {
-  animation-duration: 0.75s;
-  animation-iteration-count: infinite;
-  animation-name: rotate-forever;
-  animation-timing-function: linear;
-  height: 30px;
-  width: 30px;
-  border: 3px solid var(--primary);
+  animation: spin 0.75s linear infinite;
+  height: 40px;
+  width: 40px;
+  border: 4px solid var(--primary-color);
   border-right-color: transparent;
   border-radius: 50%;
 }
@@ -60,156 +54,71 @@ h1 {
   display: none;
 }
 
-@keyframes rotate-forever {
-  0% {
+@keyframes spin {
+  from {
     transform: rotate(0deg);
   }
-
-  100% {
+  to {
     transform: rotate(360deg);
   }
 }
 
 .app-update {
   display: none;
-  position: absolute;
-  right: 10px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
 }
 
 .app-update.show {
   display: block;
 }
 
-.nav-btn {
-  margin: 25px;
-}
-
-.btn {
-  text-align: center;
+.button {
   display: inline-block;
-  padding: 0.5rem 1.2rem;
-  margin: 0;
-  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  margin: 0.5rem;
   font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
   border-radius: 0.3rem;
-  border: 1px solid transparent;
-  outline: none;
-  color: #1a1a1a;
-  background-color: #aeaeae;
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.btn:hover {
-  background-color: #cecece;
-  cursor: pointer;
+.button-primary {
+  background-color: var(--primary-color);
+  color: var(--text-light);
 }
 
-.btn.btn-squared {
-  border-radius: 0;
+.button-primary:hover {
+  background-color: #2980b9;
 }
 
-.btn.btn-sm {
-  font-size: 0.85rem;
-  padding: 0.3rem 0.9rem;
+.button-secondary {
+  background-color: var(--secondary-color);
+  color: var(--text-dark);
 }
 
-.btn.btn-lg {
-  font-size: 1.25rem;
-  padding: 0.8rem 1.4rem;
-}
-
-.btn.btn-block {
-  width: 100%;
-  display: block;
-  text-align: center;
-}
-
-.btn.btn-primary {
-  background-color: #2d3e50;
-  color: #d9e9e8;
-}
-
-.btn.btn-primary:hover {
-  background-color: #57779a;
-}
-
-.btn.btn-danger {
-  background-color: #e64c66;
-  color: #ffffff;
-}
-
-.btn.btn-danger:hover {
-  background-color: #ee8294;
-}
-
-.btn.btn-info {
-  background-color: #1bbc9b;
-  color: #ffffff;
-}
-
-.btn.btn-info:hover {
-  background-color: #31e1bd;
-}
-
-.btn.btn-light {
-  background-color: #d9e9e8;
-  color: #1a1a1a;
-}
-
-.btn.btn-light:hover {
-  background-color: #84b8b4;
-}
-
-.btn.btn-dark {
-  background-color: #1a1a1a;
-  color: #d9e9e8;
-}
-
-.btn.btn-dark:hover {
-  background-color: #5f5f5f;
-}
-
-.btn.btn-white {
-  background-color: #ffffff;
-  color: #1a1a1a;
-}
-
-.btn.btn-white:hover {
-  background-color: #cccccc;
-}
-
-.btn.btn-black {
-  background-color: #000000;
-  color: #ffffff;
-}
-
-.btn.btn-black:hover {
-  background-color: #666666;
-}
-
-.btn.btn-link {
-  background-color: #1b89bc;
-  color: #ffffff;
-}
-
-.btn.btn-link:hover {
-  background-color: #31a9e1;
+.button-secondary:hover {
+  background-color: #dfe6e9;
 }
 
 @media only screen and (max-width: 600px) {
-  .nav-btn {
-    display: none;
+  #navbar h1 {
+    font-size: 1rem;
   }
 
   .navbar-brand {
     display: none;
   }
 
-  #navbar {
-    justify-content: center;
-  }
-
-  h1 {
-    font-size: 18px;
+  .button {
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
   }
 }

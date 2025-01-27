@@ -1,21 +1,53 @@
-import { openDB } from 'idb';
+import { openDB } from "idb";
 
-const initdb = async () =>
-  openDB('jate', 1, {
+// Initialize the database
+const initializeDatabase = async () => {
+  openDB("textEditorDB", 1, {
     upgrade(db) {
-      if (db.objectStoreNames.contains('jate')) {
-        console.log('jate database already exists');
-        return;
+      if (!db.objectStoreNames.contains("editorContent")) {
+        db.createObjectStore("editorContent", {
+          keyPath: "id",
+          autoIncrement: true,
+        });
+        console.log("Database and object store created.");
+      } else {
+        console.log("Database already exists.");
       }
-      db.createObjectStore('jate', { keyPath: 'id', autoIncrement: true });
-      console.log('jate database created');
     },
   });
+};
 
-// TODO: Add logic to a method that accepts some content and adds it to the database
-export const putDb = async (content) => console.error('putDb not implemented');
+// Save content to the database
+export const saveContent = async (content) => {
+  console.log("Saving content to the database...");
+  try {
+    const db = await openDB("textEditorDB", 1);
+    const transaction = db.transaction("editorContent", "readwrite");
+    const store = transaction.objectStore("editorContent");
+    const request = store.put({ id: 1, data: content });
+    const result = await request;
+    console.log("Content saved:", result);
+  } catch (error) {
+    console.error("Error saving content:", error);
+  }
+};
 
-// TODO: Add logic for a method that gets all the content from the database
-export const getDb = async () => console.error('getDb not implemented');
+// Retrieve content from the database
+export const fetchContent = async () => {
+  console.log("Fetching content from the database...");
+  try {
+    const db = await openDB("textEditorDB", 1);
+    const transaction = db.transaction("editorContent", "readonly");
+    const store = transaction.objectStore("editorContent");
+    const request = store.get(1);
+    const result = await request;
+    console.log("Content retrieved:", result?.data || "No content found.");
+    return result?.data;
+  } catch (error) {
+    console.error("Error fetching content:", error);
+    return null;
+  }
+};
 
-initdb();
+// Initialize the database on load
+initializeDatabase();
