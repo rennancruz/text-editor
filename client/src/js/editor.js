@@ -1,5 +1,5 @@
-import { fetchContentFromDb, saveContentToDb } from "./database";
-import { headerText } from "./header";
+import { fetchContent, saveContent } from "./database";
+import { header } from "./header";
 
 export default class TextEditor {
   constructor() {
@@ -23,9 +23,9 @@ export default class TextEditor {
     });
 
     // Load content into the editor
-    fetchContentFromDb().then((dbContent) => {
+    fetchContent().then((dbContent) => {
       console.info("Loaded content from IndexedDB into the editor.");
-      this.editor.setValue(dbContent || localStorageData || headerText);
+      this.editor.setValue(dbContent || localStorageData || header);
     });
 
     // Save content to localStorage on editor changes
@@ -36,7 +36,7 @@ export default class TextEditor {
     // Save content to IndexedDB when the editor loses focus
     this.editor.on("blur", () => {
       console.log("Editor lost focus, saving content to IndexedDB.");
-      saveContentToDb(localStorage.getItem("editorContent"));
+      saveContent(localStorage.getItem("editorContent"));
     });
   }
 }
