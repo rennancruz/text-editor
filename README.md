@@ -6,6 +6,11 @@ This project is a Progressive Web Application (PWA) designed as a browser-based 
 
 ---
 
+## Video Demo
+https://github.com/user-attachments/assets/78bb0be6-c8be-43c7-a943-5832ffc717c5
+
+---
+
 ## Features
 
 - **Offline Support**: Works without an internet connection.
